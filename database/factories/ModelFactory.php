@@ -22,3 +22,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
+    $faker->addProvider(new Faker\Provider\Lorem($faker));
+
+    $name = $faker->unique()->sentence(rand(3, 5));
+    
+    return [
+        'name' => $name,
+        'slug' => str_slug($name),
+        'description' => $faker->text(300),
+    ];
+});

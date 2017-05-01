@@ -11,10 +11,18 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
+
+Route::get('search', 'SearchController@index')->name('search');
+
+Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
+    Route::get('/', 'ProductsController@index')->name('index');
+    Route::get('{product}', 'ProductsController@show')->name('show');
+});

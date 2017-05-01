@@ -35,7 +35,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ route('home') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -43,8 +43,18 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="{{ route('welcome') }}">Welcome</a></li>
+
+                        <li><a href="{{ route('products.index') }}">Products</a></li>
                     </ul>
+
+                    <form class="navbar-form navbar-left" action="{{ route('search') }}" method="GET">
+                        <div class="form-group">
+                            <input type="text" name="q" class="form-control" value="{{ request()->get('q') }}" placeholder="Search">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
