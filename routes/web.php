@@ -26,3 +26,12 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
     Route::get('/', 'ProductsController@index')->name('index');
     Route::get('{product}', 'ProductsController@show')->name('show');
 });
+
+Route::group(['prefix' => 'notifications', 'as' => 'notifications.'], function () {
+    Route::get('/', 'NotificationsController@index')->name('index');
+    
+    Route::get('/create', 'NotificationsController@create')->name('create');
+    Route::post('/create', 'NotificationsController@store')->name('store');
+
+    Route::get('/{notification}', 'NotificationsController@show')->name('show');
+});
