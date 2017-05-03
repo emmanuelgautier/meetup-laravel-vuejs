@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotificationCreated;
 use App\Notification;
 use Illuminate\Http\Request;
 
@@ -37,9 +38,17 @@ class NotificationsController extends Controller
      */
     public function store(Request $request)
     {
-        Notification::create([
+        $notifications = Notification::all();
+
+        foreach($notifications as $notification) {
+            $notification->delete();
+        }
+
+        $notification = Notification::create([
             'message' => $request->get('message'),
         ]);
+
+        event(new NotificationCreated($notification));
 
         return redirect()->route('notifications.index');
     }

@@ -1,8 +1,14 @@
 <template>
     <div>
-        <input type="search" v-model="query" v-on:keyup="autoComplete" class="form-control">
+        <div class="row">
+            <div class="col-md-12">
+                <input type="search" v-model="query" v-on:keyup="autoComplete" class="form-control">
+            </div>
+        </div>
 
-        <div v-if="products.length">
+        <br/>
+
+        <div class="row" v-if="products.length">
             <div class="col-md-4" v-for="product in products">
                 <div class="panel panel-default">
                     <div class="panel-body">

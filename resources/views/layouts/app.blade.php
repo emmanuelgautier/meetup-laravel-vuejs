@@ -51,7 +51,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ route('notifications.index') }}">Notifications</a></li>                        
+                        <notification></notification>
 
                         <!-- Authentication Links -->
                         @if (Auth::guest())
